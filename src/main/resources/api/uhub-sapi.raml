@@ -1,0 +1,297 @@
+#%RAML 1.0
+title: uhub-sapi
+baseUri: http://uho-dev-uhub-sapi.us-e2.cloudhub.io/covid/v1/
+/case:
+  post:
+    description: To register covid case
+    headers:
+      client_id:
+        type: string
+        required: true
+        description: client id to authenticate to system API
+      client_secret:
+        type: string
+        required: true
+        description: client secret to authenticate to system API
+      x-transaction-id:
+        type: string
+        required: false
+        description: transaction id to maintain over APIs
+      x-correlation-id:
+        type: string
+        required: false
+        description: correlation id to maintain over APIs
+    body:
+      application/json:
+        example:
+          {
+            "source": "Hospital",
+            "casetype": "Positive",
+            "firstname": "John",
+            "lastname": "Nixon",
+            "phone": "541-754-3010",
+            "email": "JohnNixon12@gmail.com",
+            "dateofbirth": "1989-04-26",
+            "nationalid": "209-49-6193",
+            "nationalidtype": "SSN",
+            "address":{
+              "streetaddress": "1600 pennsylvania anenu iw",
+              "city": "Washington",
+              "state": "DC",
+              "postal": "20500",
+              "country": "USA"
+          }
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "registerid" : "673122"
+              }
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "code": 400,
+                "Message": "Bad Request",
+                "decription": "Required Key CaseType not found",
+                "DateTime": "2021-05-29T05:58:02",
+                "TransactionID": "4b4546-bvr54-6yt5r-7yujh"
+              }
+      500:
+        body:
+          application/json:
+            example:
+              {
+                "code": 500,
+                "Message": "Internal server error",
+                "decription": "The server encountered an unexpected condition which prevented it from fulfilling the request",
+                "DateTime": "2021-05-28T05:58:02",
+                "TransactionID": "4b4546-9r54-6yt5r-7yujh"
+              }
+      503:
+        body:
+          application/json:
+            example:
+              {
+                "code": 503,
+                "Message": "service unavaliable",
+                "decription": "the (upstream) service is temporarily no avilable",
+                "DateTime": "2021-05-30T05:58:02",
+                "TransactionID": "4b4546-bvr54-6yt5r-00ujh"
+              }
+  put:
+    description: To upadte covid case
+    headers:
+      client_id:
+        type: string
+        required: true
+        description: client id to authenticate to system API
+      client_secret:
+        type: string
+        required: true
+        description: client secret to authenticate to system API
+      x-transaction-id:
+        type: string
+        required: false
+        description: transaction id to maintain over APIs
+      x-correlation-id:
+        type: string
+        required: false
+        description: correlation id to maintain over APIs
+    body:
+      application/json:
+        example:
+          {
+            "source": "Hospital",
+            "casetype": "Positive",
+            "firstname": "John",
+            "lastname": "Nixon",
+            "phone": "541-754-3010",
+            "email": "JohnNixon12@gmail.com",
+            "dateofbirth": "1989-04-26",
+            "nationalid": "209-49-6193",
+            "nationalidtype": "SSN",
+            "address":{
+              "streetaddress": "1600 pennsylvania anenu iw",
+              "city": "Washington",
+              "state": "DC",
+              "postal": "20500",
+              "country": "USA"
+          }
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {
+                "registerID" : "673122"
+              }      
+      400:
+        body:
+          application/json:
+            example:
+              {
+                "code": 400,
+                "Message": "Bad Request",
+                "decription": "Required Key CaseType not found",
+                "DateTime": "2021-05-29T05:58:02",
+                "TransactionID": "4b4546-bvr54-6yt5r-7yujh"
+              }
+      500:
+        body:
+          application/json:
+            example:
+              {
+                "code": 500,
+                "Message": "Internal server error",
+                "decription": "The server encountered an unexpected condition which prevented it from fulfilling the request",
+                "DateTime": "2021-05-28T05:58:02",
+                "TransactionID": "4b4546-9r54-6yt5r-7yujh"
+              }
+      503:
+        body:
+          application/json:
+            example:
+              {
+                "code": 503,
+                "Message": "service unavaliable",
+                "decription": "the (upstream) service is temporarily no avilable",
+                "DateTime": "2021-05-30T05:58:02",
+                "TransactionID": "4b4546-bvr54-6yt5r-00ujh"
+              }
+  /(NationalID):
+    get:
+      description: To get covid case by national id.
+      headers:
+       client_id:
+        type: string
+        required: true
+        description: client id to authenticate to system API
+       client_secret:
+        type: string
+        required: true
+        description: client secret to authenticate to system API
+       x-transaction-id:
+        type: string
+        required: false
+        description: transaction id to maintain over APIs
+       x-correlation-id:
+        type: string
+        required: false
+        description: correlation id to maintain over APIs
+      body:
+        application/json:
+          example:
+            [{
+            "source": "Hospital",
+            "casetype": "Positive",
+            "firstname": "John",
+            "lastname": "Nixon",
+            "phone": "541-754-3010",
+            "email": "JohnNixon12@gmail.com",
+            "dateofbirth": "1989-04-26",
+            "nationalid": "209-49-6193",
+            "nationalidtype": "SSN",
+            "address":{
+              "streetaddress": "1600 pennsylvania anenu iw",
+              "city": "Washington",
+              "state": "DC",
+              "postal": "20500",
+              "country": "USA"
+            },
+            
+                "createdate": "03-05-2021",
+                "updatedate": "03-05-2021"
+            },
+            {
+            "source": "Hospital",
+            "casetype": "Positive",
+            "firstname": "John",
+            "lastname": "Nixon",
+            "phone": "541-754-3010",
+            "email": "JohnNixon12@gmail.com",
+            "dateofbirth": "1989-04-26",
+            "nationalid": "209-49-6193",
+            "nationalidtype": "SSN",
+            "address":{
+              "streetaddress": "1600 pennsylvania anenu iw",
+              "city": "Washington",
+              "state": "DC",
+              "postal": "20500",
+              "country": "USA"
+            },
+                "createdate": "14-12-2020",
+                "updatedate": "30-12-2020"
+            }]
+
+      
+      
+/report:
+  get:
+    description: to get covid report.
+    headers:
+      client_id:
+        type: string
+        required: true
+        description: client id to authenticate to system API
+      client_secret:
+        type: string
+        required: true
+        description: client secret to authenticate to system API
+      x-transaction-id:
+        type: string
+        required: false
+        description: transaction id to maintain over APIs
+      x-correlation-id:
+        type: string
+        required: false
+        description: correlation id to maintain over APIs
+    queryParameters:
+      state:
+        type: string
+        required: false
+        displayName: state
+        example: "texas"
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              [{
+                "state": "texas",
+                "report":{
+                  "total": "57668",
+                  "positive": "454367",
+                  "recovered": "54678",
+                  "death": "300",
+                  "vaccinated": 78906587
+              } 
+              }]
+      500:
+        body:
+          application/json:
+            example:
+              {
+                "code": 500,
+                "Message": "Internal server error",
+                "decription": "The server encountered an unexpected condition which prevented it from fulfilling the request",
+                "DateTime": "2021-05-28T05:58:02",
+                "TransactionID": "4b4546-9r54-6yt5r-7yujh"
+              }
+      503:
+        body:
+          application/json:
+            example:
+              {
+                "code": 503,
+                "Message": "service unavaliable",
+                "decription": "the (upstream) service is temporarily no avilable",
+                "DateTime": "2021-05-30T05:58:02",
+                "TransactionID": "4b4546-bvr54-6yt5r-00ujh"
+              }
+                          

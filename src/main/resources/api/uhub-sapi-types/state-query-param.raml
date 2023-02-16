@@ -1,0 +1,202 @@
+#%RAML 1.0 Library
+usage: types for uho sapi
+types:
+  covid-case-request-type:
+    type: object
+    description: 
+    properties:
+      source:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 60
+        example:
+      casetype:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 20
+        example:
+      firstname:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 60
+        example:
+      lastname:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 60
+        example:
+      phone:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 60
+        example:
+      email:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 60
+        example:
+      dateofbirth:
+        type: date-only
+        required: true
+      nationaltype:
+        type: string
+        required: true
+        minLength: 1
+        maxLength: 60
+        example:
+      address:
+        type: object
+        properties:
+          streetaddress:
+            type: string
+            required: true
+            minLength: 1
+            maxLength: 60
+            example:      
+          city:
+            type: string
+            required: true
+            minLength: 1
+            maxLength: 60
+            example:
+          state:
+            type: string
+            required: true
+            minLength: 1
+            maxLength: 60
+            example:
+          postal:
+            type: string
+            required: true
+            minLength: 1
+            maxLength: 60
+            example:
+          country:
+            type: string
+            required: true
+            minLength: 1
+            maxLength: 60
+            example:             
+  covid-case-response-type:
+    type: object
+    properties:
+      caseid:
+        type: string
+        example: "12345"
+  get-cases-by-national-id-response-type:
+    type: array
+    items:
+      type: object
+      description: 
+      properties:
+        source:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 60
+          example:
+        casetype:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 20
+          example:
+        firstname:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 60
+          example:
+        lastname:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 60
+          example:
+        phone:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 60
+          example:
+        email:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 60
+          example:
+        dateofbirth:
+          type: date-only
+          required: true
+        nationaltype:
+          type: string
+          required: true
+          minLength: 1
+          maxLength: 60
+          example:
+        address:
+          type: object
+          properties:
+            streetaddress:
+              type: string
+              required: true
+              minLength: 1
+              maxLength: 60
+              example:      
+            city:
+              type: string
+              required: true
+              minLength: 1
+              maxLength: 60
+              example:
+            state:
+              type: string
+              required: true
+              minLength: 1
+              maxLength: 60
+              example:
+            postal:
+              type: string
+              required: true
+              minLength: 1
+              maxLength: 60
+              example:
+            country:
+              type: string
+              required: true
+              minLength: 1
+              maxLength: 60
+              example: 
+            createdate:
+              type: date-only
+              required: true
+            updatedate:
+              type: date-only
+              required: true
+  get-report-response-types:
+    type: array
+    items:
+      type: object
+      properties:
+        state:
+          type: string
+        report:
+          type: object
+          properties:
+            total:
+              type: number
+            positive:
+              type: number
+            recovered:
+              type: number
+            death:
+              type: number
+            vaccinated:
+              type: number        
+                        
